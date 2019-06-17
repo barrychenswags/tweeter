@@ -1,0 +1,50 @@
+#nav-bar {
+  position: fixed;
+  padding-left: 2em;
+  padding-right: 2em;
+  height: 80px;
+  width: 100%;
+  background-color: #00a087;
+
+
+}
+
+#nav-bar .logo {
+  /* ... */
+
+  background-color: #00a087;
+  vertical-align: middle;
+
+
+}
+
+#nav-bar .header {
+  /* ... */
+  position: absolute;
+
+  padding: 10px;
+  padding-top: 30px;
+  color: #e8fdff
+  vertical-align: middle;
+
+}
+
+#nav-bar .btn {
+  position: absolute;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  vertical-align: middle;
+  border:1px solid #000;
+  border-radius: 7px;
+  color: #00a087;
+  background color: #e8fdff;
+
+
+}
+
+#nav-bar .btn:hover {
+  color: #000;
+  background color: #ffffff;
+}

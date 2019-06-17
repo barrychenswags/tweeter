@@ -10,7 +10,7 @@ html {
   box-sizing: inherit;
 }
 
-/*
+/* 244751
  * Global layout stuff
  */
 
@@ -19,6 +19,104 @@ body {
   color: #244751;
   background-color: #eee;
 }
+
+main {
+  width: 450px;
+  height: 100%;
+  margin-left: 140px;
+  margin-right: 140px;
+  padding-top: 90px;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+section.new-tweet {
+  width: 400px;
+  margin-right: 25px;
+  margin-left:25px;
+  margin-bottom: 20px;
+  padding-top: 10px;
+  background-color: #eee;
+  border-width:1px;
+  border-style:solid;
+  border-color: #ddd;
+  border-radius: 8px;
+}
+
+h2 {
+  margin-top: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  background-color: #eee;
+}
+
+textarea {
+  margin-right: 10px;
+  margin-left: 10px;
+  width: 380px;
+}
+
+input {
+  margin-right: 290px;
+  margin-left: 10px;
+  margin-bottom: 10px
+}
+
+section.tweets{
+  width: 400px;
+  margin-right: 25px;
+  margin-left:25px;
+}
+
+div.tweet{
+  border-width:1px;
+  border-style:solid;
+  border-color: #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background-color: #eee;
+}
+
+div.tweet:hover {
+  border:1px solid #aaa;
+}
+
+div.header{
+  height: 70px;
+  /*text-align: right;*/
+
+
+
+}
+
+img.avatar{
+  padding: 10px;
+  vertical-align: text-top;
+}
+
+span.user-name{
+  padding-right: 20px;
+}
+
+span.handle{
+  text-align: right;
+
+}
+
+div.tweet-body{
+  padding: 25px;
+  border-bottom: 1px solid #eee;
+  background-color: #ffffff;
+
+}
+
+div.footer{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #ffffff;
+}
+
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions

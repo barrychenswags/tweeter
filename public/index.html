@@ -23,10 +23,35 @@
     <nav id="nav-bar">
       <img class="logo" src="/images/bird.png" width="80px" height="80px">
       <span class="header">Tweeter</span>
+      <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+      <input type="submit" class="btn btn-primary" value="Compose" />
     </nav>
 
     <!-- Page-specific (main) content here -->
     <main class="container">
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form id='add-tweet'>
+          <textarea name="text" placeholder="What are you humming about?"></textarea>
+          <br>
+            <input type="submit" value="Tweet">
+            <span class="counter">140</span>
+          </br>
+        </form>
+      </section>
+
+     <section class="tweets" id="tweet-list">
+        <!-- <div class="header">
+          <img src="https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png">
+          <span name = "name">Name</span>
+          <span name = "handle">Handle</span>
+        </div>
+        <p class="tweet-body">My tweet here</p>
+        <div class="footer">
+          10 days ago
+        </div> -->
+      </section>
+
     </main>
 
   </body>

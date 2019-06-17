@@ -1,46 +1,61 @@
 [
   {
     "user": {
-      "name": "Newton",
+      "name": "McLovin",
       "avatars": {
         "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
         "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
         "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
       },
-      "handle": "@SirIsaac"
+      "handle": "@mclovin69"
     },
     "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
+      "text": "I am McLovin"
     },
     "created_at": 1461116232227
   },
   {
     "user": {
-      "name": "Descartes",
+      "name": "Brian Fantana",
       "avatars": {
         "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
         "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
         "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
       },
-      "handle": "@rd" },
+      "handle": "@channel4brian" },
     "content": {
-      "text": "Je pense , donc je suis"
+      "text": "60% of the time, it works all the time"
     },
     "created_at": 1461113959088
   },
   {
     "user": {
-      "name": "Johann von Goethe",
+      "name": "Prestige Worldwide",
       "avatars": {
         "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
         "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
         "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
       },
-      "handle": "@johann49"
+      "handle": "@prestigeworldwide"
     },
     "content": {
-      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
+      "text": "Boats N Hoes!"
     },
     "created_at": 1461113796368
+  },
+  {
+    "user": {
+      "name": "Donald Trump",
+      "avatars": {
+        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
+        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
+        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
+      },
+      "handle": "@TheRealTrump"
+    },
+    "content": {
+      "text": "Fake news!"
+    },
+    "created_at": 1461113796969
   }
 ]

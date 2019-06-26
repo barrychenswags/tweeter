@@ -62,8 +62,13 @@ const request = (options, cb) => {
 };
 
 const createTweet = tweetObj => {
-  console.log(tweetObj);
-  return `<div class = "tweet">
+  //console.log(tweetObj);
+  console.log('tweet length is: ',tweetObj.content.text.length);
+  //if(tweetObj.content.text.length<1 || tweetObj.content.text.length>10){
+    //alert("I am an alert box!");
+  //}
+  //else{
+    return `<div class = "tweet">
             <div class="header">
               <img class = "avatar" src = ${tweetObj.user.avatars.small}>
 
@@ -73,9 +78,11 @@ const createTweet = tweetObj => {
             </div>
             <div class="tweet-body">${tweetObj.content.text}</div>
             <div class="footer">
-              10 days ago
+              <span id = "date">${tweetObj.created_at}<span/>
             </div>
           </div>`;
+  //}
+
 };
 
 const renderTweets = tweets => {
@@ -92,31 +99,67 @@ const loadTweets = () => {
   };
 
   request(reqOptions, function(response) {
-    console.log(response);
+    //console.log(response);
     renderTweets(response);
   });
 };
 
 $(document).ready(function() {
   // --- our code goes here ---
-  document.getElementById('add-tweet').children[0].addEventListener("input", (event) => {
+  /*document.getElementById('add-tweet').children[0].addEventListener("input", (event) => {
     var totalCount = 140 - event.target.value.length;
     $(".counter").text(totalCount);
-  });
+  });*/
 
-  $('#add-tweet').on('submit', function(event) {
-    event.preventDefault();
-    const tweetContent = $(this).find('textarea[name=text]').val();
-    console.log(tweetContent);
-    const reqOptions = {
-      url: '/tweets',
-      method: 'POST',
-      data: { tweetContent },
-    };
 
-    request(reqOptions, tweet => {
-      renderTweets([tweet]);
+  $('#compose').on('click', function () {
+    console.log('Button clicked');
+
+    if($("section.new-tweet").length){
+      $("section.new-tweet").replaceWith(`<div id = 'replace'></div>`)
+    }
+
+    else{
+    $('#replace').replaceWith(`
+      <section class="new-tweet">
+        <h2>Compose Tweet</h2>
+        <form id='add-tweet'>
+          <textarea name="text" placeholder="What are you humming about?"></textarea>
+          <br>
+          <input type="submit" value="Tweet">
+          <span class="counter">140</span>
+
+        </form>
+      </section>`);
+
+    $('#add-tweet').on('input', function(event){
+      var totalCount = 140 - event.target.value.length;
+      $(".counter").text(totalCount);
+    })
+
+    $('#add-tweet').on('submit', function(event) {
+      event.preventDefault();
+      const tweetContent = $(this).find('textarea[name=text]').val();
+
+      if(tweetContent.length <= 0){
+        alert("Tweet cannot be empty");
+      }
+      else if (tweetContent.length > 140){
+        alert("Tweet cannot be over 140 characters");
+      }
+      else{
+        const reqOptions = {
+          url: '/tweets',
+          method: 'POST',
+          data: { tweetContent },
+        };
+
+        request(reqOptions, tweet => {
+          renderTweets([tweet]);
+        });
+      }
     });
+    }
   });
 
   loadTweets();

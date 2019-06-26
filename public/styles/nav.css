@@ -31,6 +31,8 @@
 
 #nav-bar .btn {
   position: absolute;
+  margin-left:80%;
+  margin-top: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 15px;

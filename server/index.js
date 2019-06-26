@@ -37,7 +37,7 @@ MongoClient.connect(MONGODB_URI, (err, mongoDb) => {
 // Because it exports a function that expects the `db` as a parameter, we can
 // require it and pass the `db` parameter immediately:
 const DataHelpers = require("./lib/data-helpers.js")(db);
-
+const CreateUser = require("./lib/util/user-helper.js");
 // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
 // so it can define routes that use it to interact with the data layer.
 //const tweetsRoutes = require("./routes/tweets")(DataHelpers);
@@ -59,21 +59,23 @@ app.get('/tweets', (req, res) => {
 app.post('/tweets', (req, res) => {
   // extract the content from the body of the request
   console.log(req.body);
+  console.log(CreateUser.generateRandomUser())
   const { tweetContent } = req.body;
+  var timeInMs = Date.now();
 
   // save the quote in the database
   db.collection('tweets').insertOne({
     user: {
-      name: "Drake",
+      name: CreateUser.generateRandomUser().name,
       avatars: {
-        small:   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+        small:   CreateUser.generateRandomUser().avatars.small,
       },
-      handle: "@champagnepapi"
+      handle: CreateUser.generateRandomUser().handle
     },
     content: {
       text: tweetContent
     },
-    created_at: 1461116232211
+    created_at: Date(timeInMs)
   })
     .then(result => {
       // result.ops[0]._id gets us the id that has been created in the db
@@ -82,16 +84,16 @@ app.post('/tweets', (req, res) => {
       res.send({
         _id: result.ops[0]._id,
         user:{
-          name: "Drake",
+          name: CreateUser.generateRandomUser().name,
           avatars: {
-            small:   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
+            small:   CreateUser.generateRandomUser().avatars.small,
           },
-          handle: "@champagnepapi"
+          handle: CreateUser.generateRandomUser().handle
         },
         content: {
           text: tweetContent
         },
-        created_at: 1461116232211
+        created_at: Date(timeInMs)
       });
     })
     .catch(err => console.log('Error:', err));

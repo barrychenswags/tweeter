@@ -79,10 +79,12 @@ div.tweet{
   border-radius: 5px;
   margin-bottom: 20px;
   background-color: #eee;
+  opacity: 0.8;
 }
 
 div.tweet:hover {
-  border:1px solid #aaa;
+  border:1.4px solid #999;
+  opacity: 1;
 }
 
 div.header{
@@ -119,6 +121,8 @@ div.tweet-body{
   padding: 25px;
   border-bottom: 1px solid #eee;
   background-color: #ffffff;
+  word-break: break-word;
+
 
 }
 
@@ -129,6 +133,30 @@ div.footer{
   padding-left: 10px
 }
 
+
+div.tweet > div.footer > span > img{
+  display: none;
+
+}
+
+div.tweet:hover > div.footer > span > img.like{
+  display: inline;
+  text-align: right
+  margin-top: 2px;
+}
+
+div.tweet:hover > div.footer > span > img.retweet{
+  display: inline;
+  margin-top: 2px;
+  margin-left: 5px;
+}
+
+div.tweet:hover > div.footer > span > img.flag{
+  display: inline;
+  margin-top: 2px;
+  margin-left: 5px;
+  margin-right: 15px;
+}
 
 
 

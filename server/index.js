@@ -8,7 +8,6 @@ const bodyParser    = require("body-parser");
 const app           = express();
 const Mongo = require('mongodb');
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
@@ -45,6 +44,8 @@ const CreateUser = require("./lib/util/user-helper.js");
 // Mount the tweets routes at the "/tweets" path prefix:
 //app.use("/tweets", tweetsRoutes);
 
+
+
 app.get('/tweets', (req, res) => {
   db.collection('tweets')
     .find()
@@ -75,7 +76,7 @@ app.post('/tweets', (req, res) => {
     content: {
       text: tweetContent
     },
-    created_at: Date(timeInMs)
+    created_at: timeInMs
   })
     .then(result => {
       // result.ops[0]._id gets us the id that has been created in the db
@@ -93,7 +94,7 @@ app.post('/tweets', (req, res) => {
         content: {
           text: tweetContent
         },
-        created_at: Date(timeInMs)
+        created_at: timeInMs
       });
     })
     .catch(err => console.log('Error:', err));

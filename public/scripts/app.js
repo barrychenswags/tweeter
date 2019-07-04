@@ -4,55 +4,51 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-//var totalCount;
+function convertDateFormat (comparedTime) {
+  var seconds_diff = Math.floor((Date.now() - comparedTime) / 1000); //compare the difference between current time and input time in seconds
 
-var tweets = [
-  {
-    "user": {
-      "name": "McLovin",
-      "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@mclovin69"
-    },
-    "content": {
-      "text": "I am McLovin"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Brian Fantana",
-      "avatars": {
-        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-      },
-      "handle": "@channel4brian" },
-    "content": {
-      "text": "60% of the time, it works all the time"
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Prestige Worldwide",
-      "avatars": {
-        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-      },
-      "handle": "@prestigeworldwide"
-    },
-    "content": {
-      "text": "Boats N Hoes!"
-    },
-    "created_at": 1461113796368
+  var time_unit = Math.floor(seconds_diff / 31536000);
+  if (time_unit >= 1) {
+    if (time_unit === 1){
+      return 'a year ago';
+    }
+    return time_unit + ' years ago';
   }
-]
-//createTweetElement
+
+  time_unit = Math.floor(seconds_diff / 2592000);
+  if (time_unit >= 1) {
+    if (time_unit === 1){
+      return 'a month ago';
+    }
+    return time_unit + ' months ago';
+  }
+
+  time_unit = Math.floor(seconds_diff / 86400);
+  if (time_unit >= 1) {
+    if (time_unit === 1){
+      return 'a day ago';
+    }
+    return time_unit + ' days ago';
+  }
+
+  time_unit = Math.floor(seconds_diff / 3600);
+  if (time_unit >= 1) {
+    if (time_unit === 1){
+      return 'an hour ago';
+    }
+    return time_unit + ' hours ago';
+  }
+
+  time_unit = Math.floor(seconds_diff / 60);
+  if (time_unit >= 1) {
+    if (time_unit === 1){
+      return 'a minute ago';
+    }
+    return time_unit + ' minutes ago';
+  }
+
+  return 'less than a minute ago';
+}
 
 const request = (options, cb) => {
   $.ajax(options)
@@ -76,9 +72,14 @@ const createTweet = tweetObj => {
                 <span class = "handle">${tweetObj.user.handle}</span>
 
             </div>
-            <div class="tweet-body">${tweetObj.content.text}</div>
+            <div class="tweet-body">
+              ${tweetObj.content.text}
+            </div>
             <div class="footer">
-              <span id = "date">${tweetObj.created_at}<span/>
+              <span id = "date">${convertDateFormat(tweetObj.created_at)}<span/>
+              <img class="flag" src="/images/flag.png" width="20px" height="20px" align = "right" >
+              <img class="retweet" src="/images/retweet.png" width="20px" height="20px" align = "right" >
+              <img class="like" src="/images/heart.png" width="20px" height="20px" align = "right" >
             </div>
           </div>`;
   //}
@@ -106,11 +107,6 @@ const loadTweets = () => {
 
 $(document).ready(function() {
   // --- our code goes here ---
-  /*document.getElementById('add-tweet').children[0].addEventListener("input", (event) => {
-    var totalCount = 140 - event.target.value.length;
-    $(".counter").text(totalCount);
-  });*/
-
 
   $('#compose').on('click', function () {
     console.log('Button clicked');
@@ -135,6 +131,7 @@ $(document).ready(function() {
     $('#add-tweet').on('input', function(event){
       var totalCount = 140 - event.target.value.length;
       $(".counter").text(totalCount);
+
     })
 
     $('#add-tweet').on('submit', function(event) {
@@ -142,6 +139,7 @@ $(document).ready(function() {
       const tweetContent = $(this).find('textarea[name=text]').val();
 
       if(tweetContent.length <= 0){
+        //console.log($('textarea'))
         alert("Tweet cannot be empty");
       }
       else if (tweetContent.length > 140){
